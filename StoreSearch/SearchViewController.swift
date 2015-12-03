@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
 
     // MARK: Properties
     var searchResults = [SearchResult]()
+    var hasSearched = false // could also be done with optionals
 
     // MARK: Life-Cycle
     override func viewDidLoad() {
@@ -33,12 +34,15 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        hasSearched = true
 
-        for i in 0...2 {
-            let searchResult = SearchResult()
-            searchResult.name = String(format: "Fake Result %d for", i)
-            searchResult.artistName = searchBar.text!
-            searchResults.append(searchResult)
+        if searchBar.text! != "justin bieber" {
+            for i in 0...2 {
+                let searchResult = SearchResult()
+                searchResult.name = String(format: "Fake Result %d for", i)
+                searchResult.artistName = searchBar.text!
+                searchResults.append(searchResult)
+            }
         }
         tableView.reloadData()
     }
@@ -55,6 +59,7 @@ extension SearchViewController: UITableViewDelegate {
 
 // MARK: UITableViewDataSource
 extension SearchViewController: UITableViewDataSource {
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "SearchResultCell"
 
@@ -63,15 +68,35 @@ extension SearchViewController: UITableViewDataSource {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
 
-        let searchResult = searchResults[indexPath.row]
-        cell.textLabel!.text = searchResult.name
-        cell.detailTextLabel!.text = searchResult.artistName
+        if searchResults.count == 0 {
+            cell.textLabel!.text = "(nothing found)"
+            cell.detailTextLabel!.text = ""
+        } else {
+            let searchResult = searchResults[indexPath.row]
+            cell.textLabel!.text = searchResult.name
+            cell.detailTextLabel!.text = searchResult.artistName
+        }
 
         return cell
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        if !hasSearched {
+            return 0
+        }
+        return searchResults.count == 0 ? 1 : searchResults.count
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if searchResults.count == 0 {
+            return nil
+        } else {
+            return indexPath
+        }
     }
 }
 
