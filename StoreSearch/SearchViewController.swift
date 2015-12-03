@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
 
     // MARK: Properties
-    var searchResults = [String]()
+    var searchResults = [SearchResult]()
 
     // MARK: Life-Cycle
     override func viewDidLoad() {
@@ -33,10 +33,12 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-//        print("The search text is: \(searchBar.text!)")
 
         for i in 0...2 {
-            searchResults.append(String(format: "Fake Result %d for '%@'", i, searchBar.text!))
+            let searchResult = SearchResult()
+            searchResult.name = String(format: "Fake Result %d for", i)
+            searchResult.artistName = searchBar.text!
+            searchResults.append(searchResult)
         }
         tableView.reloadData()
     }
@@ -58,10 +60,12 @@ extension SearchViewController: UITableViewDataSource {
 
         var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
 
-        cell.textLabel!.text = searchResults[indexPath.row]
+        let searchResult = searchResults[indexPath.row]
+        cell.textLabel!.text = searchResult.name
+        cell.detailTextLabel!.text = searchResult.artistName
 
         return cell
     }
