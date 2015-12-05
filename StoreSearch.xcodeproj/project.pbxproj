@@ -15,6 +15,7 @@
 		CD5A5A341C10F95300466DFC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A5A331C10F95300466DFC /* SearchResult.swift */; };
 		CDA579E61C1302DE006638CF /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA579E51C1302DE006638CF /* SearchResultCell.xib */; };
 		CDA579E81C130857006638CF /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA579E71C130857006638CF /* SearchResultCell.swift */; };
+		CDA579EA1C130B7F006638CF /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA579E91C130B7F006638CF /* NothingFoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CD5A5A331C10F95300466DFC /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		CDA579E51C1302DE006638CF /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		CDA579E71C130857006638CF /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		CDA579E91C130B7F006638CF /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				CD20FE321C0FB48000C92E4B /* LaunchScreen.storyboard */,
 				CD20FE351C0FB48000C92E4B /* Info.plist */,
 				CDA579E51C1302DE006638CF /* SearchResultCell.xib */,
+				CDA579E91C130B7F006638CF /* NothingFoundCell.xib */,
 				CDA579E71C130857006638CF /* SearchResultCell.swift */,
 			);
 			path = StoreSearch;
@@ -134,6 +137,7 @@
 				CD20FE341C0FB48000C92E4B /* LaunchScreen.storyboard in Resources */,
 				CD20FE311C0FB48000C92E4B /* Assets.xcassets in Resources */,
 				CDA579E61C1302DE006638CF /* SearchResultCell.xib in Resources */,
+				CDA579EA1C130B7F006638CF /* NothingFoundCell.xib in Resources */,
 				CD20FE2F1C0FB48000C92E4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
