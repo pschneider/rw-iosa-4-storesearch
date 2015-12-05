@@ -10,6 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    struct TableViewCellIdentifiers {
+        static let searchResultCell = "SearchResultCell"
+    }
+
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -21,7 +25,13 @@ class SearchViewController: UIViewController {
     // MARK: Life-Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        tableView.rowHeight = 80
+
+        let cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,20 +71,16 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchResultCell"
 
-        var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
 
         if searchResults.count == 0 {
-            cell.textLabel!.text = "(nothing found)"
-            cell.detailTextLabel!.text = ""
+            cell.nameLabel.text = "(nothing found)"
+            cell.artistNameLabel.text = ""
         } else {
             let searchResult = searchResults[indexPath.row]
-            cell.textLabel!.text = searchResult.name
-            cell.detailTextLabel!.text = searchResult.artistName
+            cell.nameLabel.text = searchResult.name
+            cell.artistNameLabel.text = searchResult.artistName
         }
 
         return cell
