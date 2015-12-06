@@ -8,6 +8,14 @@
 
 import Foundation
 
+func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
+    return lhs.name.localizedStandardCompare(rhs.name) == .OrderedAscending
+}
+
+func > (lhs: SearchResult, rhs: SearchResult) -> Bool {
+    return lhs.name.localizedStandardCompare(rhs.name) == .OrderedDescending
+}
+
 class SearchResult {
     var name = ""
     var artistName = ""
