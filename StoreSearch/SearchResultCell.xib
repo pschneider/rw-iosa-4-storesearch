@@ -49,6 +49,11 @@
                     <constraint firstAttribute="bottom" secondItem="zDL-LV-zQa" secondAttribute="bottom" constant="9" id="scr-3a-rzw"/>
                     <constraint firstItem="zDL-LV-zQa" firstAttribute="leading" secondItem="8tA-tM-YFq" secondAttribute="leading" constant="15" id="tWw-Hh-t8Z"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="scr-3a-rzw"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <animations/>
             <connections>
