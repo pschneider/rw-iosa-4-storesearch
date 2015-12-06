@@ -80,7 +80,53 @@ class SearchViewController: UIViewController {
             print("JSON Error: \(error)")
             return nil
         }
+    }
 
+    func parseTrack(dictionary: [String: AnyObject]) -> SearchResult {
+        let searchResult = SearchResult()
+
+        searchResult.name = dictionary["trackName"] as! String
+        searchResult.artistName = dictionary["artistName"] as! String
+        searchResult.artworkURL60 = dictionary["artworkUrl60"] as! String
+        searchResult.artworkURL100 = dictionary["artworkUrl100"] as! String
+        searchResult.storeURL = dictionary["trackViewUrl"] as! String
+        searchResult.kind = dictionary["kind"] as! String
+        searchResult.currency = dictionary["currency"] as! String
+
+        if let price = dictionary["trackPrice"] as? Double {
+            searchResult.price = price
+        }
+        if let genre = dictionary["primaryGenreName"] as? String {
+            searchResult.genre = genre
+        }
+        return searchResult
+    }
+
+    func parseDictionary(dictionary: [String: AnyObject]) -> [SearchResult] {
+        guard let array = dictionary["results"] as? [AnyObject] else {
+            print("Expected 'results' array")
+            return []
+        }
+
+        var searchResults = [SearchResult]()
+
+        for resultDict in array {
+            if let resultDict = resultDict as? [String: AnyObject] {
+                var searchResult: SearchResult?
+                if let wrapperType = resultDict["wrapperType"] as? String {
+                    switch wrapperType {
+                    case "track":
+                        searchResult = parseTrack(resultDict)
+                    default:
+                        break
+                    }
+                }
+                if let result = searchResult {
+                    searchResults.append(result)
+                }
+            }
+        }
+        return searchResults
     }
 }
 
@@ -90,14 +136,15 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             hasSearched = true
-//            searchResults = [SearchResult]()
+            searchResults = [SearchResult]()
 
             let url = urlWithSearchText(searchBar.text!)
             print("URL: \(url)")
 
             if let jsonString = performStoreRequestWithURL(url),
                 let dictionary = parseJSON(jsonString) {
-                    print("Dictionary: \(dictionary)")
+//                    print("Dictionary: \(dictionary)")
+                    searchResults = parseDictionary(dictionary)
 
                     tableView.reloadData()
                     return
@@ -129,7 +176,12 @@ extension SearchViewController: UITableViewDataSource {
 
             let searchResult = searchResults[indexPath.row]
             cell.nameLabel.text = searchResult.name
-            cell.artistNameLabel.text = searchResult.artistName
+
+            if searchResult.artistName.isEmpty {
+                cell.artistNameLabel.text = "Unkown"
+            } else {
+                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, searchResult.kind)
+            }
 
             return cell
         }
