@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-
+    
     // MARK: Properties
     var searchResults = [SearchResult]()
     var hasSearched = false // could also be done with optionals
@@ -44,23 +44,66 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: Networking
+    func performStoreRequestWithURL(url: NSURL) -> String? {
+        do {
+            return try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+        } catch {
+            print("Download Error: \(error)")
+            return nil
+        }
+    }
+
+    func showNetworkError() {
+        let alert = UIAlertController(title: "Whooops...", message: "There was an error reading from the iTunes Store. Please try again.", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+
+        presentViewController(alert, animated: true, completion: nil)
+    }
+
+    // MARK: Helper
+    func urlWithSearchText(searchText: String) -> NSURL {
+        let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchText)
+        return NSURL(string: urlString)!
+    }
+
+    func parseJSON(jsonString: String) -> [String: AnyObject]? {
+        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) else { return nil }
+
+        do {
+            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
+        } catch {
+            print("JSON Error: \(error)")
+            return nil
+        }
+
+    }
 }
 
 // MARK: UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        hasSearched = true
+        if !searchBar.text!.isEmpty {
+            searchBar.resignFirstResponder()
+            hasSearched = true
+//            searchResults = [SearchResult]()
 
-        if searchBar.text! != "justin bieber" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.name = String(format: "Fake Result %d for", i)
-                searchResult.artistName = searchBar.text!
-                searchResults.append(searchResult)
+            let url = urlWithSearchText(searchBar.text!)
+            print("URL: \(url)")
+
+            if let jsonString = performStoreRequestWithURL(url),
+                let dictionary = parseJSON(jsonString) {
+                    print("Dictionary: \(dictionary)")
+
+                    tableView.reloadData()
+                    return
             }
+            showNetworkError()
         }
-        tableView.reloadData()
     }
 
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
