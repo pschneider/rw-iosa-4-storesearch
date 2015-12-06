@@ -16,6 +16,7 @@
 		CDA579E61C1302DE006638CF /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA579E51C1302DE006638CF /* SearchResultCell.xib */; };
 		CDA579E81C130857006638CF /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA579E71C130857006638CF /* SearchResultCell.swift */; };
 		CDA579EA1C130B7F006638CF /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA579E91C130B7F006638CF /* NothingFoundCell.xib */; };
+		CDB58DBD1C14F7070004935A /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB58DBC1C14F7070004935A /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		CDA579E51C1302DE006638CF /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		CDA579E71C130857006638CF /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		CDA579E91C130B7F006638CF /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		CDB58DBC1C14F7070004935A /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				CD20FE291C0FB48000C92E4B /* AppDelegate.swift */,
 				CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */,
+				CDB58DBC1C14F7070004935A /* LoadingCell.xib */,
 				CD5A5A331C10F95300466DFC /* SearchResult.swift */,
 				CD20FE2D1C0FB48000C92E4B /* Main.storyboard */,
 				CD20FE301C0FB48000C92E4B /* Assets.xcassets */,
@@ -136,6 +139,7 @@
 			files = (
 				CD20FE341C0FB48000C92E4B /* LaunchScreen.storyboard in Resources */,
 				CD20FE311C0FB48000C92E4B /* Assets.xcassets in Resources */,
+				CDB58DBD1C14F7070004935A /* LoadingCell.xib in Resources */,
 				CDA579E61C1302DE006638CF /* SearchResultCell.xib in Resources */,
 				CDA579EA1C130B7F006638CF /* NothingFoundCell.xib in Resources */,
 				CD20FE2F1C0FB48000C92E4B /* Main.storyboard in Resources */,
