@@ -11,7 +11,7 @@
 		CD20FE2C1C0FB48000C92E4B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */; };
 		CD20FE2F1C0FB48000C92E4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD20FE2D1C0FB48000C92E4B /* Main.storyboard */; };
 		CD20FE311C0FB48000C92E4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD20FE301C0FB48000C92E4B /* Assets.xcassets */; };
-		CD20FE341C0FB48000C92E4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD20FE321C0FB48000C92E4B /* LaunchScreen.storyboard */; };
+		CD48174D1C18DF590074F803 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */; };
 		CD5A5A341C10F95300466DFC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A5A331C10F95300466DFC /* SearchResult.swift */; };
 		CDA579E61C1302DE006638CF /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDA579E51C1302DE006638CF /* SearchResultCell.xib */; };
 		CDA579E81C130857006638CF /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA579E71C130857006638CF /* SearchResultCell.swift */; };
@@ -25,8 +25,8 @@
 		CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CD20FE2E1C0FB48000C92E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD20FE301C0FB48000C92E4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CD20FE331C0FB48000C92E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD20FE351C0FB48000C92E4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		CD5A5A331C10F95300466DFC /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		CDA579E51C1302DE006638CF /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		CDA579E71C130857006638CF /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -66,11 +66,11 @@
 			children = (
 				CD20FE291C0FB48000C92E4B /* AppDelegate.swift */,
 				CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */,
+				CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */,
 				CDB58DBC1C14F7070004935A /* LoadingCell.xib */,
 				CD5A5A331C10F95300466DFC /* SearchResult.swift */,
 				CD20FE2D1C0FB48000C92E4B /* Main.storyboard */,
 				CD20FE301C0FB48000C92E4B /* Assets.xcassets */,
-				CD20FE321C0FB48000C92E4B /* LaunchScreen.storyboard */,
 				CD20FE351C0FB48000C92E4B /* Info.plist */,
 				CDA579E51C1302DE006638CF /* SearchResultCell.xib */,
 				CDA579E91C130B7F006638CF /* NothingFoundCell.xib */,
@@ -137,7 +137,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD20FE341C0FB48000C92E4B /* LaunchScreen.storyboard in Resources */,
 				CD20FE311C0FB48000C92E4B /* Assets.xcassets in Resources */,
 				CDB58DBD1C14F7070004935A /* LoadingCell.xib in Resources */,
 				CDA579E61C1302DE006638CF /* SearchResultCell.xib in Resources */,
@@ -157,6 +156,7 @@
 				CD5A5A341C10F95300466DFC /* SearchResult.swift in Sources */,
 				CDA579E81C130857006638CF /* SearchResultCell.swift in Sources */,
 				CD20FE2A1C0FB48000C92E4B /* AppDelegate.swift in Sources */,
+				CD48174D1C18DF590074F803 /* UIImageView+DownloadImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,14 +169,6 @@
 				CD20FE2E1C0FB48000C92E4B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CD20FE321C0FB48000C92E4B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD20FE331C0FB48000C92E4B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
