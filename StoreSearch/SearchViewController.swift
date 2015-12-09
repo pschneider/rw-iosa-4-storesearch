@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearched = false // could also be done with optionals
     var isLoading = false
+    var dataTask: NSURLSessionDataTask?
 
     // MARK: Life-Cycle
     override func viewDidLoad() {
@@ -213,6 +214,8 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
 
+            dataTask?.cancel()
+
             isLoading = true
             tableView.reloadData()
 
@@ -221,10 +224,10 @@ extension SearchViewController: UISearchBarDelegate {
 
             let url = urlWithSearchText(searchBar.text!)
             let session = NSURLSession.sharedSession()
-            let dataTask = session.dataTaskWithURL(url) {
+            dataTask = session.dataTaskWithURL(url) {
                 data, response, error in
-                if let error = error  {
-                    print("Failure! \(error)")
+                if let error = error where error.code == -999  {
+                    return // canceled task
                 } else if let httpResponse = response as? NSHTTPURLResponse where httpResponse.statusCode == 200 {
                     if let data = data, dictionary = self.parseJSON(data) {
                         self.searchResults = self.parseDictionary(dictionary)
@@ -246,7 +249,7 @@ extension SearchViewController: UISearchBarDelegate {
                     self.showNetworkError()
                 }
             }
-            dataTask.resume()
+            dataTask?.resume()
         }
     }
 
