@@ -52,6 +52,14 @@ class SearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            let controller = segue.destinationViewController as! DetailViewController
+            controller.searchResult = searchResults[(sender as! NSIndexPath).row]
+        }
+    }
+
     // MARK: Networking
     func showNetworkError() {
         let alert = UIAlertController(title: "Whooops...", message: "There was an error reading from the iTunes Store. Please try again.", preferredStyle: .Alert)

@@ -100,10 +100,17 @@
                                             <action selector="close" destination="jMd-oE-tbX" eventType="touchUpInside" id="jgn-1S-Zlv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XX-jR-d01">
-                                        <rect key="frame" x="168" y="212" width="68" height="24"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2XX-jR-d01">
+                                        <rect key="frame" x="165" y="210" width="69" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="pec-Lv-apw"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                         <state key="normal" title="$9.99" backgroundImage="PriceButton"/>
+                                        <connections>
+                                            <action selector="openInStore" destination="jMd-oE-tbX" eventType="touchUpInside" id="dgO-uH-ZPn"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F6N-rI-P4M">
                                         <rect key="frame" x="10" y="115" width="220" height="24"/>
@@ -149,6 +156,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="0nk-ZQ-36h"/>
                                     <constraint firstAttribute="width" constant="240" id="HQ3-w6-9Nv"/>
+                                    <constraint firstAttribute="bottom" secondItem="2XX-jR-d01" secondAttribute="bottom" constant="6" id="KFW-1S-Z0h"/>
+                                    <constraint firstAttribute="trailing" secondItem="2XX-jR-d01" secondAttribute="trailing" constant="6" id="gxR-sq-tU4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -159,7 +168,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="aristNameLabel" destination="m41-zT-XVD" id="gv4-RQ-uZX"/>
+                        <outlet property="artistNameLabel" destination="m41-zT-XVD" id="167-js-Tag"/>
                         <outlet property="artworkImageView" destination="yIn-AS-2WM" id="ztU-af-RLX"/>
                         <outlet property="genreLabel" destination="dvq-Ig-5Qc" id="yWc-PK-gGT"/>
                         <outlet property="kindLabel" destination="Oz0-Wa-tBH" id="ahV-4P-msY"/>
