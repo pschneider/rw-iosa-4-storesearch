@@ -28,13 +28,29 @@ class SearchViewController: UIViewController {
     var dataTask: NSURLSessionDataTask?
 
     // MARK: Life-Cycle
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        // register for UIContentSizeCategoryDidChangeNotification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("contentSizeCategoryChanged:"), name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
+
+    func contentSizeCategoryChanged(notification: NSNotification) {
+        // reload data on dynamic type change
+        tableView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchBar.becomeFirstResponder()
 
         tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
-        tableView.rowHeight = 80
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
 
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
@@ -268,7 +284,6 @@ extension SearchViewController: UISearchBarDelegate {
 
 // MARK: UITableViewDelegate
 extension SearchViewController: UITableViewDelegate {
-
 }
 
 // MARK: UITableViewDataSource
