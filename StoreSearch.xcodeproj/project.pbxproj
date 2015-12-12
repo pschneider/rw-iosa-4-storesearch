@@ -76,20 +76,20 @@
 			children = (
 				CD20FE291C0FB48000C92E4B /* AppDelegate.swift */,
 				CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */,
-				CD9BB7D91C1CDC5300BAF1B8 /* GradientView.swift */,
-				CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */,
-				CD5A5A331C10F95300466DFC /* SearchResult.swift */,
+				CDA579E71C130857006638CF /* SearchResultCell.swift */,
 				CD20FE2D1C0FB48000C92E4B /* Main.storyboard */,
-				CDE1A9831C1B6E8000EA37F9 /* DimmingPresentationController.swift */,
-				CD20FE301C0FB48000C92E4B /* Assets.xcassets */,
-				CD20FE351C0FB48000C92E4B /* Info.plist */,
 				CDA579E51C1302DE006638CF /* SearchResultCell.xib */,
 				CDA579E91C130B7F006638CF /* NothingFoundCell.xib */,
 				CDB58DBC1C14F7070004935A /* LoadingCell.xib */,
-				CDA579E71C130857006638CF /* SearchResultCell.swift */,
+				CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */,
+				CD5A5A331C10F95300466DFC /* SearchResult.swift */,
+				CD9BB7D91C1CDC5300BAF1B8 /* GradientView.swift */,
 				CDE1A9811C1B692900EA37F9 /* DetailViewController.swift */,
+				CDE1A9831C1B6E8000EA37F9 /* DimmingPresentationController.swift */,
 				CD9BB7DB1C1CE13B00BAF1B8 /* BounceAnimationController.swift */,
 				CD9BB7DD1C1CE5C700BAF1B8 /* SlideOutAnimationController.swift */,
+				CD20FE301C0FB48000C92E4B /* Assets.xcassets */,
+				CD20FE351C0FB48000C92E4B /* Info.plist */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
