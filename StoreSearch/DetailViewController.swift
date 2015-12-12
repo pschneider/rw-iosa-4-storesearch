@@ -106,6 +106,14 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
             presentingViewController: presenting
         )
     }
+
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
+    }
+
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOutAnimationController()
+    }
 }
 
 // Dismiss by tapping outside of the popup view
