@@ -26,27 +26,27 @@ class BounceAnimationController: NSObject, UIViewControllerAnimatedTransitioning
                     transitionDuration(transitionContext),
                     delay: 0,
                     options: .CalculationModeCubic,
-                    animations: { () -> Void in
+                    animations: {
                         UIView.addKeyframeWithRelativeStartTime(
                             0.0,
                             relativeDuration: 0.334,
-                            animations: { () -> Void in
+                            animations: {
                             toView.transform = CGAffineTransformMakeScale(1.2, 1.2)
                         })
                         UIView.addKeyframeWithRelativeStartTime(
                             0.334,
                             relativeDuration: 0.333,
-                            animations: { () -> Void in
+                            animations: {
                                 toView.transform = CGAffineTransformMakeScale(0.9, 0.9)
                         })
                         UIView.addKeyframeWithRelativeStartTime(
                             0.666,
                             relativeDuration: 0.333,
-                            animations: { () -> Void in
+                            animations: {
                                 toView.transform = CGAffineTransformMakeScale(1.0, 1.0)
                         })
                     },
-                    completion: { (finished) -> Void in
+                    completion: { finished in
                         transitionContext.completeTransition(finished)
                 })
         }

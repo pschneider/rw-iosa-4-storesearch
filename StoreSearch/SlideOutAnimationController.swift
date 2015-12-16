@@ -9,6 +9,7 @@
 import UIKit
 
 class SlideOutAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+    
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.3
     }

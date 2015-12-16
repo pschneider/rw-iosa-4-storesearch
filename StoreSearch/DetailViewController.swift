@@ -94,7 +94,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-// Change presentation mode
+// MARK: UIViewControllerTransitioningDelegate
 extension DetailViewController: UIViewControllerTransitioningDelegate {
     func presentationControllerForPresentedViewController(
         presented: UIViewController,
