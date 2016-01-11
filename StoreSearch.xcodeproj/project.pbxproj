@@ -79,9 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				CD20FE291C0FB48000C92E4B /* AppDelegate.swift */,
+				CD20FE2D1C0FB48000C92E4B /* Main.storyboard */,
 				CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */,
 				CDA579E71C130857006638CF /* SearchResultCell.swift */,
-				CD20FE2D1C0FB48000C92E4B /* Main.storyboard */,
 				CDA579E51C1302DE006638CF /* SearchResultCell.xib */,
 				CDA579E91C130B7F006638CF /* NothingFoundCell.xib */,
 				CDB58DBC1C14F7070004935A /* LoadingCell.xib */,
