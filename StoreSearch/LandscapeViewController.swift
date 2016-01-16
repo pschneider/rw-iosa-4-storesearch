@@ -132,6 +132,17 @@ class LandscapeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: Actions
+    @IBAction func pageChanged(sender: UIPageControl) {
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: {
+            self.scrollView.contentOffset = CGPoint(
+                x: self.scrollView.bounds.size.width * CGFloat(sender.currentPage),
+                y: 0)
+
+            },
+            completion: nil)
+    }
     
 
     /*

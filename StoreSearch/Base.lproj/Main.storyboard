@@ -98,6 +98,9 @@
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yew-UU-4p3">
                                 <rect key="frame" x="280" y="500" width="39" height="37"/>
+                                <connections>
+                                    <action selector="pageChanged:" destination="ycY-s3-BLW" eventType="valueChanged" id="Oym-0U-uBs"/>
+                                </connections>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
