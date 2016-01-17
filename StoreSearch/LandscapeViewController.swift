@@ -17,6 +17,7 @@ class LandscapeViewController: UIViewController {
     // MARK: Properties
     var searchResults = [SearchResult]()
     private var firstTime = true
+    private var downloadTasks = [NSURLSessionDownloadTask]()
 
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -39,6 +40,11 @@ class LandscapeViewController: UIViewController {
 
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
@@ -57,6 +63,14 @@ class LandscapeViewController: UIViewController {
         }
     }
 
+    deinit {
+        print("Deinit \(self)")
+        for task in downloadTasks {
+            task.cancel()
+        }
+    }
+
+    // MARK: Helper
     private func tileButtons(searchResults: [SearchResult]) {
         var columnsPerPage = 5
         var rowsPerPage = 3
@@ -94,9 +108,9 @@ class LandscapeViewController: UIViewController {
         var column = 0
         var x = marginX
         for (index, searchResult) in searchResults.enumerate() {
-            let button = UIButton(type: .System)
-            button.backgroundColor = UIColor.whiteColor()
-            button.setTitle("\(index)", forState:  .Normal)
+            let button = UIButton(type: .Custom)
+            button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
+            downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
             button.frame = CGRect(
                 x: x + paddingHorz,
                 y: marginY + CGFloat(row)*itemHeight + paddingVert,
@@ -128,9 +142,21 @@ class LandscapeViewController: UIViewController {
         print("Number of Pages: \(numPages)")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func downloadImageForSearchResult(searchResult: SearchResult, andPlaceOnButton button: UIButton) {
+        guard let url = NSURL(string: searchResult.artworkURL60) else { return }
+
+        let session = NSURLSession.sharedSession()
+        let downloadTask = session.downloadTaskWithURL(url) { [weak button] url, response, error in
+            if error == nil, let url = url, data = NSData(contentsOfURL: url), image = UIImage(data: data) {
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let button = button {
+                        button.setImage(image, forState: .Normal)
+                    }
+                }
+            }
+        }
+        downloadTask.resume()
+        downloadTasks.append(downloadTask)
     }
 
     // MARK: Actions
