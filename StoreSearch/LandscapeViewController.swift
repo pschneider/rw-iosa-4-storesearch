@@ -150,7 +150,7 @@ class LandscapeViewController: UIViewController {
             if error == nil, let url = url, data = NSData(contentsOfURL: url), image = UIImage(data: data) {
                 dispatch_async(dispatch_get_main_queue()) {
                     if let button = button {
-                        button.setImage(image, forState: .Normal)
+                        button.setImage(image.resizeImageWithBounds(CGSize(width: 60, height: 60)), forState: .Normal)
                     }
                 }
             }

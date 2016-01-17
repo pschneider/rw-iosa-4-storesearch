@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1276491C4C17B40007EA62 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1276481C4C17B40007EA62 /* UIImage+Resize.swift */; };
 		CD20FE2A1C0FB48000C92E4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20FE291C0FB48000C92E4B /* AppDelegate.swift */; };
 		CD20FE2C1C0FB48000C92E4B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */; };
 		CD20FE2F1C0FB48000C92E4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD20FE2D1C0FB48000C92E4B /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD1276481C4C17B40007EA62 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		CD20FE261C0FB48000C92E4B /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD20FE291C0FB48000C92E4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				CDA579E91C130B7F006638CF /* NothingFoundCell.xib */,
 				CDB58DBC1C14F7070004935A /* LoadingCell.xib */,
 				CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */,
+				CD1276481C4C17B40007EA62 /* UIImage+Resize.swift */,
 				CD5A5A331C10F95300466DFC /* SearchResult.swift */,
 				CD9BB7D91C1CDC5300BAF1B8 /* GradientView.swift */,
 				CDE1A9811C1B692900EA37F9 /* DetailViewController.swift */,
@@ -178,6 +181,7 @@
 				CD2308331C233141001D56C5 /* FadeOutAnimationController.swift in Sources */,
 				CD5A5A341C10F95300466DFC /* SearchResult.swift in Sources */,
 				CDA579E81C130857006638CF /* SearchResultCell.swift in Sources */,
+				CD1276491C4C17B40007EA62 /* UIImage+Resize.swift in Sources */,
 				CD9BB7DC1C1CE13B00BAF1B8 /* BounceAnimationController.swift in Sources */,
 				CD2308311C21DEDA001D56C5 /* LandscapeViewController.swift in Sources */,
 				CDE1A9821C1B692900EA37F9 /* DetailViewController.swift in Sources */,
