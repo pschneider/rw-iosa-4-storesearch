@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD1276491C4C17B40007EA62 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1276481C4C17B40007EA62 /* UIImage+Resize.swift */; };
+		CD12764B1C4C21220007EA62 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD12764A1C4C21220007EA62 /* Search.swift */; };
 		CD20FE2A1C0FB48000C92E4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20FE291C0FB48000C92E4B /* AppDelegate.swift */; };
 		CD20FE2C1C0FB48000C92E4B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */; };
 		CD20FE2F1C0FB48000C92E4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD20FE2D1C0FB48000C92E4B /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		CD1276481C4C17B40007EA62 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		CD12764A1C4C21220007EA62 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CD20FE261C0FB48000C92E4B /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD20FE291C0FB48000C92E4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD20FE2B1C0FB48000C92E4B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				CD9BB7DB1C1CE13B00BAF1B8 /* BounceAnimationController.swift */,
 				CD9BB7DD1C1CE5C700BAF1B8 /* SlideOutAnimationController.swift */,
 				CD2308301C21DEDA001D56C5 /* LandscapeViewController.swift */,
+				CD12764A1C4C21220007EA62 /* Search.swift */,
 				CD20FE301C0FB48000C92E4B /* Assets.xcassets */,
 				CD20FE351C0FB48000C92E4B /* Info.plist */,
 			);
@@ -189,6 +192,7 @@
 				CD9BB7DA1C1CDC5300BAF1B8 /* GradientView.swift in Sources */,
 				CD48174D1C18DF590074F803 /* UIImageView+DownloadImage.swift in Sources */,
 				CD9BB7DE1C1CE5C700BAF1B8 /* SlideOutAnimationController.swift in Sources */,
+				CD12764B1C4C21220007EA62 /* Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
