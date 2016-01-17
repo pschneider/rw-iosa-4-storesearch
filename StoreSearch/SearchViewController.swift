@@ -69,8 +69,10 @@ class SearchViewController: UIViewController {
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail" {
-            let controller = segue.destinationViewController as! DetailViewController
-            controller.searchResult = search.searchResults[(sender as! NSIndexPath).row]
+            if case .Results(let list) = search.state {
+                let controller = segue.destinationViewController as! DetailViewController
+                controller.searchResult = list[(sender as! NSIndexPath).row]
+            }
         }
     }
 
@@ -167,32 +169,30 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        if search.isLoading {
+        switch search.state {
+        case .NotSearchedYet: fatalError("Should never get here")
+        case .Loading:
             let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath: indexPath)
             let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
             spinner.startAnimating()
             return cell
-        } else if search.searchResults.count == 0 {
+        case .NoResults:
             return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.nothingFoundCell, forIndexPath: indexPath)
-
-        } else {
+        case .Results(let list):
             let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
 
-            let searchResult = search.searchResults[indexPath.row]
-            cell.configureForSearchResult(searchResult)
-
+            cell.configureForSearchResult(list[indexPath.row])
             return cell
         }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if search.isLoading {
-            return 1
-        } else if !search.hasSearched {
-            return 0
+        switch search.state {
+        case .NotSearchedYet: return 0
+        case .Loading: return 1
+        case .NoResults: return 1
+        case .Results(let list): return list.count
         }
-        return search.searchResults.count == 0 ? 1 : search.searchResults.count
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -201,9 +201,10 @@ extension SearchViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if search.searchResults.count == 0 || search.isLoading {
+        switch search.state {
+        case .NotSearchedYet, .Loading, .NoResults:
             return nil
-        } else {
+        case .Results:
             return indexPath
         }
     }

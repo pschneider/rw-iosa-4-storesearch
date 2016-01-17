@@ -59,7 +59,10 @@ class LandscapeViewController: UIViewController {
 
         if firstTime {
             firstTime = false
-            tileButtons(search.searchResults)
+            switch search.state {
+            case .NotSearchedYet, .Loading, .NoResults: break
+            case .Results(let list): tileButtons(list)
+            }
         }
     }
 
@@ -107,7 +110,7 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for (index, searchResult) in searchResults.enumerate() {
+        for searchResult in searchResults {
             let button = UIButton(type: .Custom)
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
             downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
