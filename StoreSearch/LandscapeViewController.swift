@@ -60,7 +60,8 @@ class LandscapeViewController: UIViewController {
         if firstTime {
             firstTime = false
             switch search.state {
-            case .NotSearchedYet, .Loading, .NoResults: break
+            case .NotSearchedYet, .NoResults: break
+            case .Loading: showSpinner()
             case .Results(let list): tileButtons(list)
             }
         }
@@ -73,7 +74,29 @@ class LandscapeViewController: UIViewController {
         }
     }
 
+    // MARK: API
+    func searchResultsRecieved() {
+        hideSpinner()
+        switch search.state {
+        case .NotSearchedYet, .Loading, .NoResults: break
+        case .Results(let list): tileButtons(list)
+        }
+    }
+
     // MARK: Helper
+    private func hideSpinner() {
+        view.viewWithTag(1000)?.removeFromSuperview()
+    }
+    private func showSpinner() {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.center = CGPoint(
+            x: CGRectGetMidX(scrollView.bounds) + 0.5,
+            y: CGRectGetMidY(scrollView.bounds) + 0.5)
+        spinner.tag = 1000
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+
     private func tileButtons(searchResults: [SearchResult]) {
         var columnsPerPage = 5
         var rowsPerPage = 3
