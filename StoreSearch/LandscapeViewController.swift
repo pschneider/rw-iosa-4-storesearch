@@ -152,9 +152,11 @@ class LandscapeViewController: UIViewController {
         var row = 0
         var column = 0
         var x = marginX
-        for searchResult in searchResults {
+        for (index, searchResult) in searchResults.enumerate() {
             let button = UIButton(type: .Custom)
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
+            button.tag = 2000 + index
+            button.addTarget(self, action: Selector("buttonPressed:"), forControlEvents: .TouchUpInside)
             downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
             button.frame = CGRect(
                 x: x + paddingHorz,
@@ -214,17 +216,21 @@ class LandscapeViewController: UIViewController {
             },
             completion: nil)
     }
+
+    func buttonPressed(sender: UIButton) {
+        performSegueWithIdentifier("ShowDetail", sender: sender)
+    }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail" {
+            if case .Results(let list) = search.state {
+                let detailViewController = segue.destinationViewController as! DetailViewController
+                detailViewController.searchResult = list[sender!.tag - 2000]
+            }
+        }
     }
-    */
 
 }
 
