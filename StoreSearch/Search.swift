@@ -48,7 +48,7 @@ class Search {
 
             let url = urlWithSearchText(text, category: category)
             let session = NSURLSession.sharedSession()
-            dataTask = session.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+            dataTask = session.dataTaskWithURL(url) { (data, response, error) in
                 self.state = .NotSearchedYet
                 var success = false
                 if let error = error where error.code == -999 {
@@ -70,7 +70,7 @@ class Search {
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     completion(success)
                 }
-            })
+            }
             dataTask?.resume()
         }
     }

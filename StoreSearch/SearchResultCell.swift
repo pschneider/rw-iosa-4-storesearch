@@ -28,8 +28,6 @@ class SearchResultCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     override func prepareForReuse() {
@@ -42,16 +40,19 @@ class SearchResultCell: UITableViewCell {
         artistNameLabel.text = nil
         artworkImageView.image = nil
 
-//        print("REUUUSEEE")
     }
 
     func configureForSearchResult(searchResult: SearchResult) {
         nameLabel.text = searchResult.name
 
         if searchResult.artistName.isEmpty {
-            artistNameLabel.text = "Unkown"
+            artistNameLabel.text = NSLocalizedString("Unkown", comment: "Unkown Artist Name")
         } else {
-            artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, searchResult.kindForDisplay())
+            artistNameLabel.text = String(
+                    format: NSLocalizedString("ARTIST_NAME_LABEL_FORMAT",
+                    comment: "Format for artist name label"),
+                searchResult.artistName,
+                searchResult.kindForDisplay())
         }
 
         artworkImageView.image = UIImage(named: "Placeholder")
