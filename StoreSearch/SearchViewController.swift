@@ -60,6 +60,8 @@ class SearchViewController: UIViewController {
         cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
 
+        title = NSLocalizedString("Search", comment: "Split-view master button")
+
     }
 
     override func didReceiveMemoryWarning() {
