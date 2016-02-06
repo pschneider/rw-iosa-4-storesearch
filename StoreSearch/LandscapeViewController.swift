@@ -35,9 +35,6 @@ class LandscapeViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = true
 
         scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "LandscapeBackground")!)
-//        scrollView.contentSize = CGSize(width: 1000, height: 1000)
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -226,8 +223,9 @@ class LandscapeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail" {
             if case .Results(let list) = search.state {
-                let detailViewController = segue.destinationViewController as! DetailViewController
-                detailViewController.searchResult = list[sender!.tag - 2000]
+                let controller = segue.destinationViewController as! DetailViewController
+                controller.searchResult = list[sender!.tag - 2000]
+                controller.isPopUp = true
             }
         }
     }

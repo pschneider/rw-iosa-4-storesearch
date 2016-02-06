@@ -4,4 +4,5 @@
 
   Created by Patrick Schneider on 06/02/16.
   Copyright © 2016 Patrick Schneider. All rights reserved.
-*/
+ */
+CFBundleDisplayName = "StoreSearch";
