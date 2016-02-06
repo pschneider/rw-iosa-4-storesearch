@@ -38,6 +38,7 @@ class SearchViewController: UIViewController {
 
     func contentSizeCategoryChanged(notification: NSNotification) {
         // reload data on dynamic type change
+        print("contentSizeCategoryChanged")
         tableView.reloadData()
     }
 
