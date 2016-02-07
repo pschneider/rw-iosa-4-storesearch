@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -120,13 +121,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyB-kJ-Zb7">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyB-kJ-Zb7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="ycY-s3-BLW" id="jDP-Wp-7mq"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yew-UU-4p3">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yew-UU-4p3">
                                 <rect key="frame" x="280" y="500" width="39" height="37"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="280" y="500" width="40" height="37"/>
@@ -137,6 +138,14 @@
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="WI9-S7-5wq" firstAttribute="top" secondItem="Yew-UU-4p3" secondAttribute="bottom" constant="63" id="ONf-Js-M09"/>
+                            <constraint firstItem="jyB-kJ-Zb7" firstAttribute="top" secondItem="OPB-MI-OGJ" secondAttribute="topMargin" id="RUg-Dr-rMf"/>
+                            <constraint firstItem="jyB-kJ-Zb7" firstAttribute="leading" secondItem="OPB-MI-OGJ" secondAttribute="leading" id="X36-H3-IZb"/>
+                            <constraint firstAttribute="trailing" secondItem="jyB-kJ-Zb7" secondAttribute="trailing" id="e5P-jB-a8O"/>
+                            <constraint firstItem="WI9-S7-5wq" firstAttribute="top" secondItem="jyB-kJ-Zb7" secondAttribute="bottom" id="kgM-xI-fG2"/>
+                            <constraint firstItem="Yew-UU-4p3" firstAttribute="centerX" secondItem="OPB-MI-OGJ" secondAttribute="centerX" id="z5L-75-2Yr"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="pageControl" destination="Yew-UU-4p3" id="55i-tX-1xt"/>
@@ -353,6 +362,6 @@
         <image name="PriceButton" width="11" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="51f-1V-qCC"/>
+        <segue reference="CqK-L2-Git"/>
     </inferredMetricsTieBreakers>
 </document>
