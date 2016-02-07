@@ -20,6 +20,7 @@
 		CD46BB131C6626E2009EFE79 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD46BB151C6626E2009EFE79 /* SearchResultCell.xib */; };
 		CD46BB181C662B5E009EFE79 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD46BB161C662B5E009EFE79 /* Localizable.strings */; };
 		CD48174D1C18DF590074F803 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */; };
+		CD50BC961C67B83900B7D53F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD50BC951C67B83900B7D53F /* MenuViewController.swift */; };
 		CD5A5A341C10F95300466DFC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A5A331C10F95300466DFC /* SearchResult.swift */; };
 		CD76345B1C666C4A00BDA722 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD76345D1C666C4A00BDA722 /* InfoPlist.strings */; };
 		CD9BB7DA1C1CDC5300BAF1B8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9BB7D91C1CDC5300BAF1B8 /* GradientView.swift */; };
@@ -50,6 +51,7 @@
 		CD46BB171C662B5E009EFE79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CD46BB191C662BA7009EFE79 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CD48174C1C18DF590074F803 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		CD50BC951C67B83900B7D53F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CD5A5A331C10F95300466DFC /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SearchResult.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CD76345C1C666C4A00BDA722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD76345E1C666C5500BDA722 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				CD1276481C4C17B40007EA62 /* UIImage+Resize.swift */,
 				CD5A5A331C10F95300466DFC /* SearchResult.swift */,
 				CD9BB7D91C1CDC5300BAF1B8 /* GradientView.swift */,
+				CD50BC951C67B83900B7D53F /* MenuViewController.swift */,
 				CDE1A9811C1B692900EA37F9 /* DetailViewController.swift */,
 				CD2308321C233141001D56C5 /* FadeOutAnimationController.swift */,
 				CDE1A9831C1B6E8000EA37F9 /* DimmingPresentationController.swift */,
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD20FE2C1C0FB48000C92E4B /* SearchViewController.swift in Sources */,
+				CD50BC961C67B83900B7D53F /* MenuViewController.swift in Sources */,
 				CDE1A9841C1B6E8000EA37F9 /* DimmingPresentationController.swift in Sources */,
 				CD2308331C233141001D56C5 /* FadeOutAnimationController.swift in Sources */,
 				CD5A5A341C10F95300466DFC /* SearchResult.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class DetailViewController: UIViewController {
 
@@ -104,7 +105,7 @@ class DetailViewController: UIViewController {
 
         popupView.hidden = false
         self.popupView.alpha = 0.0
-        UIView.animateWithDuration(10, delay: 0.0, options: .CurveEaseIn, animations: {
+        UIView.animateWithDuration(0.25, delay: 0.0, options: .CurveEaseIn, animations: {
             self.popupView.alpha = 1.0
         }, completion: nil)
     }
@@ -118,6 +119,14 @@ class DetailViewController: UIViewController {
     @IBAction func openInStore() {
         if let url = NSURL(string: searchResult.storeURL) {
             UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowMenu" {
+            let controller = segue.destinationViewController as! MenuViewController
+            controller.delegate = self
         }
     }
 }
@@ -153,5 +162,30 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
 extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return (touch.view === self.view)
+    }
+}
+
+// MARK: MenuViewControllerDelegate
+extension DetailViewController: MenuViewControllerDelegate {
+    func menuViewControllerSendSupportEmail(controller: MenuViewController) {
+        dismissViewControllerAnimated(true) {
+            if MFMailComposeViewController.canSendMail() {
+                let controller = MFMailComposeViewController()
+                controller.mailComposeDelegate = self
+                controller.modalPresentationStyle = .PageSheet
+                controller.setSubject(NSLocalizedString(("Support Request"), comment: "Email subject"))
+                controller.setToRecipients(["test@example.com"])
+                self.presentViewController(controller, animated: true, completion: nil)
+            }
+
+        }
+    }
+}
+
+// MARK: MFMailComposeViewControllerDelegate
+extension DetailViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        // for tutorial purpose only. Dont check if it worked / failed
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
