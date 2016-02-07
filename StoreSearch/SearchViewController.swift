@@ -87,16 +87,26 @@ class SearchViewController: UIViewController {
 
     override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
-        switch newCollection.verticalSizeClass {
-        case .Compact:
-            showLandscapeViewWithCoordinator(coordinator)
-        case .Regular, .Unspecified:
-            hideLandscapeViewWithCoordinator(coordinator)
+
+        let rect = UIScreen.mainScreen().bounds
+
+        if (rect.width == 736 && rect.height == 414) ||
+            (rect.width == 414 && rect.height == 736) {
+            if presentedViewController != nil {
+                dismissViewControllerAnimated(true, completion: nil)
+            }
+        } else if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+            switch newCollection.verticalSizeClass {
+            case .Compact:
+                showLandscapeViewWithCoordinator(coordinator)
+            case .Regular, .Unspecified:
+                hideLandscapeViewWithCoordinator(coordinator)
+            }
         }
     }
 
     func showLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
-        precondition(landscapeViewController == nil)
+//        precondition(landscapeViewController == nil)
         landscapeViewController = storyboard!.instantiateViewControllerWithIdentifier("LandscapeViewController") as? LandscapeViewController
         if let controller = landscapeViewController {
             controller.search = search
